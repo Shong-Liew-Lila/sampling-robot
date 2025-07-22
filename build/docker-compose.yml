@@ -25,7 +25,7 @@ services:
       - ../ignition/projects:/usr/local/bin/ignition/data/projects
       - ../ignition/custom-lib:/usr/local/bin/ignition/data/custom-lib
       - ../ignition//config/ignition.conf:/usr/local/bin/ignition/data/ignition.conf
-      # - ../ignition/db:/usr/local/bin/ignition/data/db
+      - ../ignition/db/config.idb:/usr/local/bin/ignition/data/db/config.idb
       - ../ignition/ignition_user_modules:/usr/local/bin/ignition/user-lib/modules
     environment:
       - ACCEPT_IGNITION_EULA=Y
