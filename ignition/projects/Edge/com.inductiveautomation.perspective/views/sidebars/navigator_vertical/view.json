@@ -1,0 +1,1417 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 50
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "lbl_spacer_0"
+        },
+        "position": {
+          "basis": "10px",
+          "shrink": 0
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lila_sciences_logo"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "props": {
+              "fit": {
+                "height": 50,
+                "mode": "fill",
+                "width": 50
+              },
+              "source": "/system/images/lila/logo/lila_sciences_logo.png",
+              "style": {
+                "borderBottomLeftRadius": 5,
+                "borderBottomRightRadius": 5,
+                "borderTopLeftRadius": 5,
+                "borderTopRightRadius": 5,
+                "marginBottom": 12.5,
+                "marginTop": 12.5
+              }
+            },
+            "type": "ia.display.image"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide user-interfaces/menu/logo_title_vertical",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide user-interfaces/menu/logo_title_vertical"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show user-interfaces/menu/logo_title_vertical"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {},
+              "text": "Lila Sciences, Inc."
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "flexC_logo"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "lbl_spacer_1"
+        },
+        "position": {
+          "basis": "10px",
+          "shrink": 0
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide  user-interfaces/menu/group_title_vertical",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide  user-interfaces/menu/group_title_vertical"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show user-interfaces/menu/group_title_vertical"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignVertical": "bottom",
+              "style": {},
+              "text": "MAIN MENU"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "flexC_subtitle_0"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/home",
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.menu_title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "menu_target": "/",
+          "menu_title": "Overview"
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)\n\tself.custom.mouse \u003d \"over\""
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_menu_0"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.custom.menu_target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "user-interfaces/header/icon interactive/navigation/selectable_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "user-interfaces/header/icon interactive/navigation/selectable_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "user-interfaces/header/icon interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/phone_android",
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.menu_title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "menu_target": "/instruments",
+          "menu_title": "Instruments"
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)\n\tself.custom.mouse \u003d \"over\""
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_menu_1"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.custom.menu_target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "user-interfaces/header/icon interactive/navigation/selectable_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "user-interfaces/header/icon interactive/navigation/selectable_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "user-interfaces/header/icon interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/show_chart",
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.menu_title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "menu_target": "/charts",
+          "menu_title": "Charts"
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)\n\tself.custom.mouse \u003d \"over\""
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_menu_2"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.custom.menu_target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "user-interfaces/header/icon interactive/navigation/selectable_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "user-interfaces/header/icon interactive/navigation/selectable_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "user-interfaces/header/icon interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tshowSubMenu \u003d self.props.params.showSubMenu\n\tself.props.params.showSubMenu \u003d not showSubMenu"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "embed_menu_3"
+        },
+        "propConfig": {
+          "position.basis": {
+            "binding": {
+              "config": {
+                "path": "this.props.params.showSubMenu"
+              },
+              "transforms": [
+                {
+                  "code": "\tsubMenu \u003d self.props.params.subMenu\n\tbasis_int \u003d 50\n\tif value:\n\t\tfor item in subMenu:\n\t\t\tif item.enable:\n\t\t\t\tbasis_int +\u003d 50\n\t\t\n\treturn \"%dpx\"%basis_int",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.params.mouse": {
+            "binding": {
+              "config": {
+                "path": "parent.custom.mouse"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "loading": {
+            "order": "with-parent"
+          },
+          "params": {
+            "mainMenu": {
+              "icon": "material/access_alarm",
+              "title": "Alarm"
+            },
+            "showSubMenu": false,
+            "subMenu": [
+              {
+                "enable": true,
+                "icon": "material/notification_important",
+                "target": "/alarms/alarm_status",
+                "title": "Status"
+              },
+              {
+                "enable": true,
+                "icon": "material/history_toggle_off",
+                "target": "/alarms/alarm_journal",
+                "title": "Journal"
+              },
+              {
+                "enable": false,
+                "icon": "",
+                "target": "",
+                "title": ""
+              },
+              {
+                "enable": false,
+                "icon": "",
+                "target": "",
+                "title": ""
+              },
+              {
+                "enable": false,
+                "icon": "",
+                "target": "",
+                "title": ""
+              }
+            ]
+          },
+          "path": "templates/menu/subMenu_oneNested",
+          "style": {
+            "overflow": "hidden"
+          },
+          "useDefaultViewHeight": true,
+          "useDefaultViewWidth": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/cloud_queue",
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.menu_title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "menu_target": "/automation_hub",
+          "menu_title": "Automation Hub"
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)\n\tself.custom.mouse \u003d \"over\""
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_menu_4"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.custom.menu_target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "user-interfaces/header/icon interactive/navigation/selectable_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "user-interfaces/header/icon interactive/navigation/selectable_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "user-interfaces/header/icon interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "lbl_spacer_2"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tif self.session.props.auth.authenticated:\n\t\tsystem.perspective.logout()\n\telse:\n\t\tsystem.perspective.login()"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "icon_user",
+              "tooltip": {
+                "location": "bottom",
+                "tail": false
+              }
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.auth.authenticated"
+                  },
+                  "type": "property"
+                }
+              },
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.auth.authenticated"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "err",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "click to sign in"
+                        },
+                        {
+                          "input": true,
+                          "output": "click to sign out"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "material/person",
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tif self.session.props.auth.authenticated:\n\t\tsystem.perspective.logout()\n\telse:\n\t\tsystem.perspective.login()"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "hasDelegate": true,
+              "name": "lbl_sign_in",
+              "tooltip": {
+                "location": "bottom",
+                "tail": false
+              }
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.auth.authenticated"
+                  },
+                  "type": "property"
+                }
+              },
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.auth.authenticated"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "err",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "click to sign in"
+                        },
+                        {
+                          "input": true,
+                          "output": "click to sign out"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.auth.user.userName"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} \u003d null || len({value}) \u003d 0, \"Sign In\", {value})",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "cursor": "pointer",
+                "marginLeft": "4px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "flexC_user"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "user-interfaces/header/icon interactive/icon/selectable",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "page": "/alarms/alarm-status"
+                  },
+                  "scope": "C",
+                  "type": "nav"
+                }
+              }
+            },
+            "meta": {
+              "name": "icon_alarm",
+              "tooltip": {
+                "enabled": true,
+                "location": "bottom",
+                "tail": false,
+                "text": "click to navigate to alarm page"
+              }
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "../lbl_alarms.custom.numAlarms"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} \u003e 0, \"user-interfaces/header/alarm_active\", \"user-interfaces/header/icon\")",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "material/alarm"
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "menuShow": true
+            },
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "page": "/alarms/alarm-status"
+                  },
+                  "scope": "C",
+                  "type": "nav"
+                }
+              }
+            },
+            "meta": {
+              "hasDelegate": true,
+              "name": "lbl_alarms",
+              "tooltip": {
+                "enabled": true,
+                "location": "bottom",
+                "tail": false,
+                "text": "click to navigate to alarm page"
+              }
+            },
+            "position": {
+              "basis": "240px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.numAlarms": {
+                "binding": {
+                  "config": {
+                    "expression": "now(2000)"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn len(system.alarm.queryStatus(state\u003d[\"ActiveUnacked\"]))",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "/root.custom.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.numAlarms"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "numberFormat({value}, \"#,##0\") + \" alarm\" + if({value} \u003e 1 || {value} \u003d 0, \"s\", \"\")",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "cursor": "pointer",
+                "marginLeft": "6px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "flexC_alarms"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "user-interfaces/header/icon interactive/icon/selectable",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "custom": {
+      "mouse": "leave",
+      "subMenuOff": false
+    },
+    "events": {
+      "dom": {
+        "onMouseLeave": {
+          "config": {
+            "script": "\tconfig \u003d {\n\t\t\t\"size\" : 50\n\t\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)\n\tself.custom.mouse \u003d \"leave\""
+          },
+          "scope": "G",
+          "type": "script"
+        },
+        "onMouseOver": {
+          "config": {
+            "script": "\tconfig \u003d {\n\t\t\t\"size\" : 300\n\t\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)\n\tself.custom.mouse \u003d \"over\""
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.mouse": {
+        "onChange": {
+          "enabled": null,
+          "script": "\tif \"leave\" in currentValue.value:\n\t\tself.custom.subMenuOff \u003d True"
+        }
+      },
+      "custom.subMenuOff": {
+        "onChange": {
+          "enabled": null,
+          "script": "\t# collapse all submenu\n\tif currentValue.value:\n\t\tfor child in self.getChildren():\n\t\t    if \"subMenu\" in child.getName():\n\t\t    \tself.getChild(child.getName()).props.params.showSubMenu \u003d False\t\t\n\t\tself.custom.subMenuOff \u003d False #reset trigger"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "user-interfaces/menu/container_style_0",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

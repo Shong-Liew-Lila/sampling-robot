@@ -1,0 +1,24 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "config.json",
+    "doPut.py",
+    "doTrace.py",
+    "doHead.py",
+    "doPatch.py",
+    "doOptions.py",
+    "doPost.py",
+    "doGet.py",
+    "doDelete.py"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "lila-admin",
+      "timestamp": "2025-07-22T18:09:26Z"
+    },
+    "lastModificationSignature": "e9c2f1b04aab689d5c7664a72d12eea0839c83bdf67e74362fd387760f8c53ff"
+  }
+}

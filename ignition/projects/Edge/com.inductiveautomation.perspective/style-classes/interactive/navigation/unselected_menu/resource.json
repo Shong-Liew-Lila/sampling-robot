@@ -1,0 +1,16 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "style.json"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "lila-admin",
+      "timestamp": "2025-07-22T18:09:27Z"
+    },
+    "lastModificationSignature": "a1cf5d308520420c6976086046e30c602a31aa4d08a8e44a629ce4f5b22eff06"
+  }
+}

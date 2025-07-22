@@ -1,0 +1,264 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 48,
+      "width": 1080
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "HorizontalMenu"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.items[0].style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.props.items[0].target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "interactive/navigation/unselected_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "interactive/navigation/unselected_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.items[1].style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.props.items[1].target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "interactive/navigation/unselected_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "interactive/navigation/unselected_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.items[2].style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.props.items[2].target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "interactive/navigation/unselected_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "interactive/navigation/unselected_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.items[3].style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn value in [item[\"target\"] for item in self.props.items[3][\"items\"]]",
+                  "type": "script"
+                },
+                {
+                  "fallback": "interactive/navigation/unselected_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "interactive/navigation/unselected_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.items[4].style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d {this.props.items[4].target}",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "interactive/navigation/unselected_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "interactive/navigation/unselected_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "itemStyle": {
+            "classes": "user-interfaces/menu/item_horizontal"
+          },
+          "items": [
+            {
+              "enabled": true,
+              "icon": {
+                "path": "material/home"
+              },
+              "items": [],
+              "label": "Overview",
+              "style": {},
+              "target": "/"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": "material/tablet_android"
+              },
+              "items": [],
+              "label": "Instrument Status",
+              "style": {},
+              "target": "/instrument-status"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": "material/show_chart"
+              },
+              "items": [],
+              "label": "Charts",
+              "style": {},
+              "target": "/charts"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": "material/alarm"
+              },
+              "items": [
+                {
+                  "enabled": true,
+                  "icon": {
+                    "path": ""
+                  },
+                  "items": [],
+                  "label": "Alarm Status",
+                  "style": {
+                    "classes": ""
+                  },
+                  "target": "/alarms/alarm-status"
+                },
+                {
+                  "enabled": true,
+                  "icon": {
+                    "path": ""
+                  },
+                  "items": [],
+                  "label": "Alarm Journal",
+                  "style": {
+                    "classes": ""
+                  },
+                  "target": "/alarms/alarm-journal"
+                }
+              ],
+              "label": "Alarms",
+              "style": {},
+              "target": ""
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": "material/cloud_queue"
+              },
+              "items": [],
+              "label": "Automation Hub Status",
+              "style": {},
+              "target": "/automation-hub-status"
+            }
+          ],
+          "style": {
+            "classes": "user-interfaces/menu/menu_horizontal"
+          }
+        },
+        "type": "ia.navigation.horizontalmenu"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.flex"
+  }
+}

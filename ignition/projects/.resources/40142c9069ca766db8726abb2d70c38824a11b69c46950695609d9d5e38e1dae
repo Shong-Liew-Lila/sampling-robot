@@ -1,0 +1,12 @@
+{
+  "base": {
+    "style": {
+      "color": "#555555",
+      "fontFamily": "Arial",
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "textAlign": "center",
+      "textTransform": "uppercase"
+    }
+  }
+}

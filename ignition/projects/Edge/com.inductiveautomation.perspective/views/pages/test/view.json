@@ -1,0 +1,156 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "mode_enum": {
+            "auto": {
+              "indicatorValue": 1,
+              "tp_cmd": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/mode/auto"
+            },
+            "hand": {
+              "indicatorValue": 2,
+              "tp_cmd": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/mode/hand"
+            },
+            "off": {
+              "indicatorValue": 0,
+              "tp_cmd": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/mode/off"
+            }
+          },
+          "tp_mode_status": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/mode"
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tmode_enum \u003d self.custom.mode_enum\n\tcontrolValue \u003d self.props.controlValue\n\t\n\tfor item in mode_enum:\n\t\tif controlValue \u003d\u003d mode_enum[item][\"indicatorValue\"]:\n\t\t\ttagpath \u003d mode_enum[item][\"tp_cmd\"]\n\t\t\t\n\tsystem.tag.writeBlocking(tagpath, True)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "msb_mode"
+        },
+        "position": {
+          "basis": "200px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "mode_enum": "{this.custom.mode_enum}",
+                  "mode_status": "tag({this.custom.tp_mode_status})"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tmode_enum \u003d value[\"mode_enum\"]\n\tmode_keys \u003d mode_enum .keys()\n\tmode_status \u003d value[\"mode_status\"]\n\tif mode_status in mode_keys:\n\t\treturn mode_enum[mode_status][\"indicatorValue\"]\n\t\n\treturn 0",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "controlValue": 2,
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "backgroundColor": "#FFF275",
+                "classes": "interactive/button/selectable"
+              },
+              "text": "Hand",
+              "unselectedStyle": {
+                "classes": "interactive/button/selectable"
+              },
+              "value": 2
+            },
+            {
+              "selectedStyle": {
+                "backgroundColor": "#F84553",
+                "classes": "interactive/button/selectable"
+              },
+              "text": "Off",
+              "unselectedStyle": {
+                "classes": "interactive/button/selectable"
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "backgroundColor": "#7CEA9C",
+                "classes": "interactive/button/selectable"
+              },
+              "text": "Auto",
+              "unselectedStyle": {
+                "classes": "interactive/button/selectable"
+              },
+              "value": 1
+            }
+          ]
+        },
+        "type": "ia.input.multi-state-button"
+      },
+      {
+        "custom": {
+          "tp": "[edge]sparkplug_b/workcell_control/_utility/light_control/data"
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\n\ttp \u003d self.custom.tp\n\tsystem.tag.writeBlocking(tp, self.props.value)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[MQTT Engine]Edge Nodes/ocp00/wc001_ign01/workcell_control/_utility/light_control/data"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

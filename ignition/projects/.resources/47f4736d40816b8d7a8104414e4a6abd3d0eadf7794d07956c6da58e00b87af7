@@ -1,0 +1,272 @@
+{
+  "custom": {},
+  "params": {
+    "fileSizeLimits": 10,
+    "fileUploadTitle": "Run Parameters Files",
+    "maxUploads": 5,
+    "pageId": "",
+    "popups_id": "",
+    "supportedFileTypes": [
+      "json"
+    ]
+  },
+  "propConfig": {
+    "params.fileSizeLimits": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.fileUploadTitle": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.maxUploads": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pageId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popups_id": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.supportedFileTypes": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 275,
+      "width": 400
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "lbl_title"
+        },
+        "position": {
+          "basis": "35px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.fileUploadTitle"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "user-interfaces/page/subtitle_med"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "custom": {
+          "fileData": {}
+        },
+        "events": {
+          "component": {
+            "onFileReceived": {
+              "config": {
+                "script": "\tfileDataString \u003d event.file.getString()\n\t\n\t# Json File\n\tif event.file.name.split(\".\")[-1] \u003d\u003d \"json\":\n\t\tfileDataStringDecode \u003d system.util.jsonDecode(fileDataString)\n\t\tself.custom.fileData \u003d fileDataStringDecode\n\t\n\t# Csv File\n\tif event.file.name.split(\".\")[-1] \u003d\u003d \"csv\":\n\t\tself.custom.fileData \u003d fileDataString"
+              },
+              "scope": "G",
+              "type": "script"
+            },
+            "onUploadsCleared": {
+              "config": {
+                "script": "\tself.custom.fileData \u003d {}"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "FileUpload"
+        },
+        "position": {
+          "basis": "150px"
+        },
+        "propConfig": {
+          "props.fileSizeLimit": {
+            "binding": {
+              "config": {
+                "path": "view.params.fileSizeLimits"
+              },
+              "type": "property"
+            }
+          },
+          "props.maxUploads": {
+            "binding": {
+              "config": {
+                "path": "view.params.maxUploads"
+              },
+              "type": "property"
+            }
+          },
+          "props.supportedFileTypes": {
+            "binding": {
+              "config": {
+                "path": "view.params.supportedFileTypes"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.fileupload"
+      },
+      {
+        "meta": {
+          "name": "lbl_spacer_0"
+        },
+        "position": {
+          "basis": "20px"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tpageIdParams \u003d self.view.params.pageId\n\tmessageTypeCode \u003d \"fileUploadSaved\"\n\tfileData \u003d self.parent.parent.getChild(\"FileUpload\").custom.fileData\n\tpayload \u003d {\n\t\t\t\"fileData\": fileData\n\t\t}\n\tsystem.perspective.sendMessage(messageType \u003d messageTypeCode , payload \u003d payload)\n\tsystem.perspective.closePopup(id \u003d self.view.params.popups_id)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btn_save"
+            },
+            "position": {
+              "basis": "90px"
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": ".../FileUpload.custom.fileData"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value.keys():\n\t\treturn True\n\t\n\treturn False",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "this.props.enabled"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "interactive/button/disabled user-interfaces/page/button_marginalized_1",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "interactive/button/disabled user-interfaces/page/button_marginalized_1"
+                        },
+                        {
+                          "input": true,
+                          "output": "interactive/button/selectable user-interfaces/page/button_marginalized_1"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "primary": false,
+              "style": {},
+              "text": "Save"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.closePopup(id \u003d self.view.params.popups_id)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btn_cancel"
+            },
+            "position": {
+              "basis": "90px"
+            },
+            "props": {
+              "primary": false,
+              "style": {
+                "classes": "interactive/button/selectable user-interfaces/page/button_marginalized_1"
+              },
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "flexC_utility"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "lbl_spacer_1"
+        },
+        "position": {
+          "basis": "20px"
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "base": {
+    "style": {
+      "borderBottomColor": "#2B2B2B",
+      "borderBottomStyle": "none",
+      "borderBottomWidth": "1px",
+      "borderLeftColor": "#2B2B2B",
+      "borderLeftStyle": "none",
+      "borderLeftWidth": "1px",
+      "borderRightColor": "#2B2B2B",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "2px",
+      "borderTopColor": "#2B2B2B",
+      "borderTopStyle": "none",
+      "borderTopWidth": "1px"
+    }
+  }
+}

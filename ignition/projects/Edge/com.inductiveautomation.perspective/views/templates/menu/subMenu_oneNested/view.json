@@ -1,0 +1,1216 @@
+{
+  "custom": {},
+  "params": {
+    "mainMenu": {
+      "icon": "material/access_alarm",
+      "title": "Alarm"
+    },
+    "mouse": "over",
+    "showSubMenu": false,
+    "subMenu": [
+      {
+        "enable": true,
+        "icon": "material/notification_important",
+        "target": "/alarm-status",
+        "title": "Status"
+      },
+      {
+        "enable": true,
+        "icon": "material/history_toggle_off",
+        "target": "/alarm-journal",
+        "title": "Journal"
+      },
+      {
+        "enable": false,
+        "icon": "",
+        "target": "",
+        "title": ""
+      },
+      {
+        "enable": false,
+        "icon": "",
+        "target": "",
+        "title": ""
+      },
+      {
+        "enable": false,
+        "icon": "",
+        "target": "",
+        "title": ""
+      }
+    ]
+  },
+  "propConfig": {
+    "params.mainMenu": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.mouse": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.showSubMenu": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.subMenu": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 400,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mainMenu.icon"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "220px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mainMenu.title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon_arrow"
+            },
+            "position": {
+              "basis": "20px"
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.showSubMenu"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "material/keyboard_arrow_right",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "material/keyboard_arrow_right"
+                        },
+                        {
+                          "input": true,
+                          "output": "material/keyboard_arrow_down"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_3"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "flexC_mainMenu"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "page.props.path"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn value in [item[\"target\"] for item in self.view.params.subMenu]",
+                  "type": "script"
+                },
+                {
+                  "fallback": "user-interfaces/header/icon interactive/navigation/selectable_menu",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "user-interfaces/header/icon interactive/navigation/selectable_menu"
+                    },
+                    {
+                      "input": true,
+                      "output": "interactive/navigation/highlight_menu"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[0].icon"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "220px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[0].title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "showSubMenu": false
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_subMenu_0"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.menu_target": {
+            "binding": {
+              "config": {
+                "path": "view.params.subMenu[0].target"
+              },
+              "type": "property"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "showSubMenu": "{view.params.showSubMenu}",
+                  "subMenuEn": "{view.params.subMenu[0].enable}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "{value}[\"showSubMenu\"] \u0026\u0026 {value}[\"subMenuEn\"] ",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.showSubMenu"
+              },
+              "transforms": [
+                {
+                  "fallback": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable"
+                    },
+                    {
+                      "input": true,
+                      "output": "adv-submenu-show user-interfaces/header/icon interactive/icon/selectable"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[1].icon"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "220px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[1].title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "showSubMenu": false
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_subMenu_1"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.menu_target": {
+            "binding": {
+              "config": {
+                "path": "view.params.subMenu[1].target"
+              },
+              "type": "property"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "showSubMenu": "{view.params.showSubMenu}",
+                  "subMenuEn": "{view.params.subMenu[1].enable}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "{value}[\"showSubMenu\"] \u0026\u0026 {value}[\"subMenuEn\"] ",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.showSubMenu"
+              },
+              "transforms": [
+                {
+                  "fallback": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable"
+                    },
+                    {
+                      "input": true,
+                      "output": "adv-submenu-show user-interfaces/header/icon interactive/icon/selectable"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[2].icon"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "220px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[2].title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "showSubMenu": false
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_subMenu_2"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.menu_target": {
+            "binding": {
+              "config": {
+                "path": "view.params.subMenu[2].target"
+              },
+              "type": "property"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "showSubMenu": "{view.params.showSubMenu}",
+                  "subMenuEn": "{view.params.subMenu[2].enable}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "{value}[\"showSubMenu\"] \u0026\u0026 {value}[\"subMenuEn\"] ",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.showSubMenu"
+              },
+              "transforms": [
+                {
+                  "fallback": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable"
+                    },
+                    {
+                      "input": true,
+                      "output": "adv-submenu-show user-interfaces/header/icon interactive/icon/selectable"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[3].icon"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "220px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[3].title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "showSubMenu": false
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_subMenu_3"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.menu_target": {
+            "binding": {
+              "config": {
+                "path": "view.params.subMenu[3].target"
+              },
+              "type": "property"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "showSubMenu": "{view.params.showSubMenu}",
+                  "subMenuEn": "{view.params.subMenu[3].enable}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "{value}[\"showSubMenu\"] \u0026\u0026 {value}[\"subMenuEn\"] ",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.showSubMenu"
+              },
+              "transforms": [
+                {
+                  "fallback": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable"
+                    },
+                    {
+                      "input": true,
+                      "output": "adv-submenu-show user-interfaces/header/icon interactive/icon/selectable"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "basis": "25px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[4].icon"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_text"
+            },
+            "position": {
+              "basis": "220px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.mouse"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "adv-menu-hide",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "leave",
+                          "output": "adv-menu-hide"
+                        },
+                        {
+                          "input": "over",
+                          "output": "adv-menu-show"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.subMenu[4].title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {}
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "5px"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "custom": {
+          "showSubMenu": false
+        },
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttarget \u003d self.custom.menu_target\n\tsystem.perspective.navigate(target)\n\tconfig \u003d {\n\t\t\"size\" : 300\n\t\t}\n\tsystem.perspective.alterDock(dockId \u003d \u0027_QojUbse\u0027, config \u003d config)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "flexC_subMenu_4"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.menu_target": {
+            "binding": {
+              "config": {
+                "path": "view.params.subMenu[4].target"
+              },
+              "type": "property"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "showSubMenu": "{view.params.showSubMenu}",
+                  "subMenuEn": "{view.params.subMenu[4].enable}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "{value}[\"showSubMenu\"] \u0026\u0026 {value}[\"subMenuEn\"] ",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.showSubMenu"
+              },
+              "transforms": [
+                {
+                  "fallback": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "adv-submenu-hide user-interfaces/header/icon interactive/icon/selectable"
+                    },
+                    {
+                      "input": true,
+                      "output": "adv-submenu-show user-interfaces/header/icon interactive/icon/selectable"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

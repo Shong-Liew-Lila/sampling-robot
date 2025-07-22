@@ -1,0 +1,25 @@
+/* Direct stylesheet authoring is an advanced feature. Knowledge of CSS required.*/
+
+.psc-adv-menu-hide {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.05s ease, transform 0.05s ease;
+}
+
+.psc-adv-menu-show {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s ease 0.2s, transform 0.2s ease;
+}
+
+.psc-adv-submenu-hide {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.05s ease, transform 0.05s ease;
+}
+
+.psc-adv-submenu-show {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s ease 0.2s, transform 0.2s ease;
+}

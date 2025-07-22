@@ -1,0 +1,5201 @@
+{
+  "custom": {
+    "tp_local_run_parameters": "[edge]zzPlayground/local_run_parameters",
+    "tp_remote_run_parameters": "[edge]zzPlayground/remote_run_parameters"
+  },
+  "params": {},
+  "propConfig": {
+    "custom.tp_local_run_parameters": {
+      "persistent": true
+    },
+    "custom.tp_remote_run_parameters": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 740,
+      "width": 1080
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_spacer_0"
+            },
+            "position": {
+              "basis": "10px"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_mode"
+            },
+            "position": {
+              "basis": "75px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "user-interfaces/page/subtitle_med"
+              },
+              "text": "Mode:"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "mode_enum": {
+                "auto": {
+                  "indicatorValue": 1,
+                  "tp_cmd": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/mode/auto"
+                },
+                "hand": {
+                  "indicatorValue": 2,
+                  "tp_cmd": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/mode/hand"
+                },
+                "off": {
+                  "indicatorValue": 0,
+                  "tp_cmd": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/mode/off"
+                }
+              },
+              "tp_mode_status": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/mode"
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tmode_enum \u003d self.custom.mode_enum\n\tcontrolValue \u003d self.props.controlValue\n\t\n\tfor item in mode_enum:\n\t\tif controlValue \u003d\u003d mode_enum[item][\"indicatorValue\"]:\n\t\t\ttagpath \u003d mode_enum[item][\"tp_cmd\"]\n\t\t\t\n\tsystem.tag.writeBlocking(tagpath, True)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "msb_mode"
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.indicatorValue": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "mode_enum": "{this.custom.mode_enum}",
+                      "mode_status": "tag({this.custom.tp_mode_status})"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tmode_enum \u003d value[\"mode_enum\"]\n\tmode_keys \u003d mode_enum .keys()\n\tmode_status \u003d value[\"mode_status\"]\n\tif mode_status in mode_keys:\n\t\treturn mode_enum[mode_status][\"indicatorValue\"]\n\t\n\treturn 0",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "controlValue": 1,
+              "orientation": "row",
+              "states": [
+                {
+                  "selectedStyle": {
+                    "backgroundColor": "#FFF275",
+                    "classes": "interactive/button/selectable"
+                  },
+                  "text": "Hand",
+                  "unselectedStyle": {
+                    "classes": "interactive/button/selectable"
+                  },
+                  "value": 2
+                },
+                {
+                  "selectedStyle": {
+                    "backgroundColor": "#F84553",
+                    "classes": "interactive/button/selectable"
+                  },
+                  "text": "Off",
+                  "unselectedStyle": {
+                    "classes": "interactive/button/selectable"
+                  },
+                  "value": 0
+                },
+                {
+                  "selectedStyle": {
+                    "backgroundColor": "#7CEA9C",
+                    "classes": "interactive/button/selectable"
+                  },
+                  "text": "Auto",
+                  "unselectedStyle": {
+                    "classes": "interactive/button/selectable"
+                  },
+                  "value": 1
+                }
+              ]
+            },
+            "type": "ia.input.multi-state-button"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_1"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_state"
+            },
+            "position": {
+              "basis": "75px"
+            },
+            "props": {
+              "style": {
+                "classes": "user-interfaces/page/subtitle_med"
+              },
+              "text": "State:"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "state_dict": [
+                {
+                  "color": "#D5D5D5",
+                  "text": "IDLE"
+                },
+                {
+                  "color": "#FFCCCC",
+                  "text": "STOPPED"
+                },
+                {
+                  "color": "#CCFFCC",
+                  "text": "RUNNING"
+                },
+                {
+                  "color": "#FFFFCC",
+                  "text": "NOT READY"
+                },
+                {
+                  "color": "#CCFFCC",
+                  "text": "INITIALIZING"
+                }
+              ],
+              "tp_state": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/state"
+            },
+            "meta": {
+              "name": "lbl_state_details"
+            },
+            "position": {
+              "basis": "150px"
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "state_details": "{this.props.text}",
+                      "state_dict": "{this.custom.state_dict}\r\n"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tfor item in value[\"state_dict\"]:\n\t\tif item[\"text\"] \u003d\u003d value[\"state_details\"]:\n\t\t\treturn item[\"color\"]\n\t\n\treturn None",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "tp_state": "{this.custom.tp_state}"
+                    },
+                    "tagPath": "{tp_state}"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "user-interfaces/page/state_display"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_2"
+            },
+            "position": {
+              "basis": "75px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "icon_device_info",
+              "tooltip": {
+                "text": "This Instrument is Remotely Controlled"
+              },
+              "visible": false
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "#555555",
+              "path": "material/info",
+              "style": {
+                "classes": "interactive/icon/selectable"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_3"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "tp_alarm": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/alarm"
+            },
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\talarm_exist \u003d self.custom.alarm_exist\n\tif alarm_exist:\n\t\tsystem.perspective.navigate(page \u003d \u0027/alarms/alarm-status\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "icon_alarm"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "propConfig": {
+              "custom.alarm_exist": {
+                "binding": {
+                  "config": {
+                    "expression": "now(2000)"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\ttp_alarm \u003d self.custom.tp_alarm\n\tallAlarmTagsPath \u003d [str(item[\"fullPath\"]) for item in system.tag.browse(tp_alarm)]\n\talarmTagsValues \u003d [qualifiedValue.value for qualifiedValue in system.tag.readBlocking(allAlarmTagsPath)] #get all values as a list\n\t\n\treturn True in alarmTagsValues # check if there is any alarm exists.\n\t",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.alarm_exist"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "#D5D5D5",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "#2B2B2B"
+                        },
+                        {
+                          "input": true,
+                          "output": "#FF0000"
+                        }
+                      ],
+                      "outputType": "color",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.alarm_exist"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "material/notifications_none",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "material/notifications_none"
+                        },
+                        {
+                          "input": true,
+                          "output": "material/notifications_active"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.alarm_exist"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": ""
+                        },
+                        {
+                          "input": true,
+                          "output": "interactive/icon/selectable"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "lbl_spacer_4"
+            },
+            "position": {
+              "basis": "10px",
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "tp_remote": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/remote/remote_controlled"
+            },
+            "meta": {
+              "name": "icon_remote",
+              "tooltip": {
+                "text": "This Instrument is Remotely Controlled"
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "propConfig": {
+              "meta.tooltip.enabled": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "tp_remote": "{this.custom.tp_remote}"
+                    },
+                    "tagPath": "{tp_remote}"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "tp_remote": "{this.custom.tp_remote}"
+                    },
+                    "tagPath": "{tp_remote}"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "#D5D5D5",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "#FFFFFF00"
+                        },
+                        {
+                          "input": true,
+                          "output": "#CCFFCC"
+                        }
+                      ],
+                      "outputType": "color",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "color": "#2B2B2B",
+              "path": "material/settings_remote",
+              "style": {
+                "classes": ""
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "flexC_utility"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_A11"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0491,
+                  "y": 0.028
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A12"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2767,
+                  "y": 0.028
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A13"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.5006,
+                  "y": 0.028
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A14"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7478,
+                  "y": 0.028
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A22"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2767,
+                  "y": 0.2613
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A24"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7478,
+                  "y": 0.2613
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A23"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.5006,
+                  "y": 0.2613
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A21"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0411,
+                  "y": 0.2613
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A32"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2767,
+                  "y": 0.515
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A34"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7478,
+                  "y": 0.515
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A33"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.5006,
+                  "y": 0.515
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A31"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0411,
+                  "y": 0.515
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A42"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2767,
+                  "y": 0.752
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A44"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7478,
+                  "y": 0.752
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A43"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.5006,
+                  "y": 0.752
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_A41"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0411,
+                  "y": 0.752
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "coorC_source_fixture_A"
+            },
+            "position": {
+              "height": 0.775,
+              "width": 0.3,
+              "x": 0.0139,
+              "y": 0.1514
+            },
+            "props": {
+              "aspectRatio": "1:1",
+              "mode": "percent",
+              "style": {
+                "classes": "user-interfaces/fixtures/boxed-medium"
+              }
+            },
+            "type": "ia.container.coord"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_F11"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0406,
+                  "y": 0.0191
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F12"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2682,
+                  "y": 0.0191
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F13"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.4921,
+                  "y": 0.0191
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F14"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7393,
+                  "y": 0.0191
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F22"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2682,
+                  "y": 0.2524
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F24"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7393,
+                  "y": 0.2524
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F23"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.4921,
+                  "y": 0.2524
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F21"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0326,
+                  "y": 0.2524
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F32"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2682,
+                  "y": 0.5061
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F34"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7393,
+                  "y": 0.5061
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F33"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.4921,
+                  "y": 0.5061
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F31"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0326,
+                  "y": 0.5061
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F42"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.2682,
+                  "y": 0.7431
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F44"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.7393,
+                  "y": 0.7431
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F43"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.4921,
+                  "y": 0.7431
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_F41"
+                },
+                "position": {
+                  "height": 0.1736,
+                  "width": 0.1627,
+                  "x": 0.0326,
+                  "y": 0.7431
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-small user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "coorC_source_fixture_F"
+            },
+            "position": {
+              "height": 0.775,
+              "width": 0.3,
+              "x": 0.6848,
+              "y": 0.1514
+            },
+            "props": {
+              "aspectRatio": "1:1",
+              "mode": "percent",
+              "style": {
+                "classes": "user-interfaces/fixtures/boxed-medium"
+              }
+            },
+            "type": "ia.container.coord"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_B11"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.0389,
+                  "y": 0.2611
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B12"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2703,
+                  "y": 0.2629
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B13"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.495,
+                  "y": 0.2629
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B14"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.7224,
+                  "y": 0.2638
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B24"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.7237,
+                  "y": 0.5268
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B23"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4963,
+                  "y": 0.5258
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B22"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2716,
+                  "y": 0.5258
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_B21"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.0402,
+                  "y": 0.524
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "coorC_dest_fixture_B"
+            },
+            "position": {
+              "height": 0.3,
+              "width": 0.15,
+              "x": 0.3381,
+              "y": 0.2134
+            },
+            "props": {
+              "aspectRatio": "2:1.5",
+              "mode": "percent",
+              "style": {
+                "classes": "user-interfaces/fixtures/boxed-medium"
+              }
+            },
+            "type": "ia.container.coord"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_C11"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.023,
+                  "y": 0.2394
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C12"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2544,
+                  "y": 0.2412
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C13"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4791,
+                  "y": 0.2412
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C14"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.7065,
+                  "y": 0.2421
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C24"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.7078,
+                  "y": 0.5051
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C23"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4804,
+                  "y": 0.5041
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C22"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2557,
+                  "y": 0.5041
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_C21"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.0243,
+                  "y": 0.5023
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "coorC_dest_fixture_C"
+            },
+            "position": {
+              "height": 0.3,
+              "width": 0.15,
+              "x": 0.5119,
+              "y": 0.2134
+            },
+            "props": {
+              "aspectRatio": "2:1.5",
+              "mode": "percent",
+              "style": {
+                "classes": "user-interfaces/fixtures/boxed-medium"
+              }
+            },
+            "type": "ia.container.coord"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_D11"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.0071,
+                  "y": 0.2177
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D12"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2385,
+                  "y": 0.2195
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D13"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4632,
+                  "y": 0.2195
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D14"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.6906,
+                  "y": 0.2204
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D24"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.6919,
+                  "y": 0.4834
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D23"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4645,
+                  "y": 0.4824
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D22"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2398,
+                  "y": 0.4824
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_D21"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.0084,
+                  "y": 0.4806
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "coorC_dest_fixture_D"
+            },
+            "position": {
+              "height": 0.3,
+              "width": 0.15,
+              "x": 0.3366,
+              "y": 0.5644
+            },
+            "props": {
+              "aspectRatio": "2:1.5",
+              "mode": "percent",
+              "style": {
+                "classes": "user-interfaces/fixtures/boxed-medium"
+              }
+            },
+            "type": "ia.container.coord"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_E11"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "y": 0.196
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E12"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2226,
+                  "y": 0.1978
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E13"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4473,
+                  "y": 0.1978
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E14"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.6747,
+                  "y": 0.1987
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E24"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.676,
+                  "y": 0.4617
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E23"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.4486,
+                  "y": 0.4607
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E22"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "x": 0.2239,
+                  "y": 0.4607
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_E21"
+                },
+                "position": {
+                  "height": 0.25,
+                  "width": 0.22,
+                  "y": 0.4589
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.name"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.split(\u0027_\u0027)[1]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/fixtures/boxed-xsmall user-interfaces/fixtures/text-medium"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "coorC_dest_fixture_E"
+            },
+            "position": {
+              "height": 0.3,
+              "width": 0.15,
+              "x": 0.5134,
+              "y": 0.5644
+            },
+            "props": {
+              "aspectRatio": "2:1.5",
+              "mode": "percent",
+              "style": {
+                "classes": "user-interfaces/fixtures/boxed-medium"
+              }
+            },
+            "type": "ia.container.coord"
+          }
+        ],
+        "meta": {
+          "name": "coorC_main"
+        },
+        "position": {
+          "basis": "360px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "classes": "user-interfaces/page/container_style_0"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "lbl_run_parameters_number"
+                        },
+                        "position": {
+                          "basis": "225px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "..../flexC_remote_run_parameters.custom.run_parameters_value.Work_Order_Number"
+                              },
+                              "transforms": [
+                                {
+                                  "expression": "\"Work Order Number: \" + {value}",
+                                  "type": "expression"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "lbl_fixture_id"
+                        },
+                        "position": {
+                          "basis": "250px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "..../flexC_remote_run_parameters.custom.run_parameters_value.Fixture_ID"
+                              },
+                              "transforms": [
+                                {
+                                  "expression": "\"Fixture ID: \" + {value}",
+                                  "type": "expression"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "lbl_spacer"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "\n"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "custom": {
+                          "tp_run_parameters_loaded": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/actions/run_parameters_loaded"
+                        },
+                        "meta": {
+                          "name": "cb_loaded"
+                        },
+                        "position": {
+                          "basis": "200px"
+                        },
+                        "propConfig": {
+                          "props.selected": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "tp_run_parameters_loaded": "{this.custom.tp_run_parameters_loaded}"
+                                },
+                                "tagPath": "{tp_run_parameters_loaded}"
+                              },
+                              "type": "tag"
+                            }
+                          },
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "tp_run_parameters_loaded": "{this.custom.tp_run_parameters_loaded}"
+                                },
+                                "tagPath": "{tp_run_parameters_loaded}"
+                              },
+                              "transforms": [
+                                {
+                                  "fallback": "Err",
+                                  "inputType": "scalar",
+                                  "mappings": [
+                                    {
+                                      "input": false,
+                                      "output": "Not Loaded"
+                                    },
+                                    {
+                                      "input": true,
+                                      "output": "Loaded"
+                                    }
+                                  ],
+                                  "outputType": "scalar",
+                                  "type": "map"
+                                }
+                              ],
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": {
+                          "enabled": false,
+                          "textPosition": "left"
+                        },
+                        "type": "ia.input.checkbox"
+                      },
+                      {
+                        "meta": {
+                          "name": "lbl_spacer_0"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "text": "\n"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "flexC_utility"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "custom": {
+                      "tp_row_num": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/actions/run_parameters_row"
+                    },
+                    "meta": {
+                      "name": "tbl_data"
+                    },
+                    "position": {
+                      "basis": "400px"
+                    },
+                    "propConfig": {
+                      "props.data": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_remote_run_parameters": "{view.custom.tp_remote_run_parameters}"
+                            },
+                            "tagPath": "{tp_remote_run_parameters}"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\t# variables\n#\treturn value\n\trun_parameters \u003d value[\"Workorder\"]\n\trun_parametersLength \u003d len(run_parameters[\"id\"]) #utilizing id as confirming run_parameters length\n\trun_parametersHeaders \u003d run_parameters.keys() #access json keys to confirm format\n\tdataArray \u003d []\n\t\n\t#populate with data and need to transform into table format\n\tfor idx in range(run_parametersLength):\n\t\tdataArray.append({})\n\t\tfor header in run_parametersHeaders:\n\t\t\tdataArray[idx][header] \u003d run_parameters[header][idx]\n\treturn dataArray",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.selection.selectedRow": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_row_num": "{this.custom.tp_row_num}"
+                            },
+                            "tagPath": "{tp_row_num}"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "id",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "number",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 60
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "sourcepos",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Source Position"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 80
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "sourcerots",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Source Rotation"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "number",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 80
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "dlocs",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Destination Location"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 100
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "drots",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Destination Rotation"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "number",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 100
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "dtype",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Destination Type"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 250
+                        }
+                      ],
+                      "pager": {
+                        "bottom": false
+                      },
+                      "selection": {
+                        "data": [
+                          {
+                            "dlocs": "A1-1",
+                            "drots": 90,
+                            "dtype": "Staticpartof a serialnumber",
+                            "id": 123,
+                            "sourcepos": "C2-3",
+                            "sourcerots": 0
+                          }
+                        ]
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "flexC_remote_run_parameters"
+                },
+                "propConfig": {
+                  "custom.run_parameters_value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "tp_remote_run_parameters": "{view.custom.tp_remote_run_parameters}"
+                        },
+                        "tagPath": "{tp_remote_run_parameters}"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "lbl_run_parameters_number"
+                        },
+                        "position": {
+                          "basis": "225px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "..../flexC_local_run_parameters.custom.run_parameters_value.Work_Order_Number"
+                              },
+                              "transforms": [
+                                {
+                                  "expression": "\"Work Order Number: \" + {value}",
+                                  "type": "expression"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "lbl_fixture_id"
+                        },
+                        "position": {
+                          "basis": "250px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "..../flexC_local_run_parameters.custom.run_parameters_value.Fixture_ID"
+                              },
+                              "transforms": [
+                                {
+                                  "expression": "\"Fixture ID: \" + {value}",
+                                  "type": "expression"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "lbl_spacer"
+                        },
+                        "position": {
+                          "basis": "100px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "\n"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "custom": {
+                          "tp_run_parameters_loaded": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/actions/run_parameters_loaded"
+                        },
+                        "meta": {
+                          "name": "cb_loaded"
+                        },
+                        "position": {
+                          "basis": "150px"
+                        },
+                        "propConfig": {
+                          "props.selected": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "tp_run_parameters_loaded": "{this.custom.tp_run_parameters_loaded}"
+                                },
+                                "tagPath": "{tp_run_parameters_loaded}"
+                              },
+                              "type": "tag"
+                            }
+                          },
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "fallbackDelay": 2.5,
+                                "mode": "indirect",
+                                "references": {
+                                  "tp_run_parameters_loaded": "{this.custom.tp_run_parameters_loaded}"
+                                },
+                                "tagPath": "{tp_run_parameters_loaded}"
+                              },
+                              "transforms": [
+                                {
+                                  "fallback": "Err",
+                                  "inputType": "scalar",
+                                  "mappings": [
+                                    {
+                                      "input": false,
+                                      "output": "Not Loaded"
+                                    },
+                                    {
+                                      "input": true,
+                                      "output": "Loaded"
+                                    }
+                                  ],
+                                  "outputType": "scalar",
+                                  "type": "map"
+                                }
+                              ],
+                              "type": "tag"
+                            }
+                          }
+                        },
+                        "props": {
+                          "enabled": false,
+                          "textPosition": "left"
+                        },
+                        "type": "ia.input.checkbox"
+                      },
+                      {
+                        "events": {
+                          "dom": {
+                            "onClick": {
+                              "config": {
+                                "script": "\tparams \u003d {\n\t\t\"fileSizeLimits\": 10\n\t\t, \"fileUploadTitle\": \"Run Parameters File Upload\"\n\t\t, \"maxUploads\": 1\n\t\t, \"popups_id\": \"X_24-_t7\"\n\t\t, \"supportedFileTypes\": [\"json\"]\n\t\t, \"pageId\": \"pages/instrument-status\"\n\t\t}\n\tsystem.perspective.openPopup(id \u003d \"X_24-_t7\", view \u003d \"popups/file_upload_box\", params \u003d params, modal \u003d True)"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "icon_fileUpload"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "custom.enable": {
+                            "binding": {
+                              "config": {
+                                "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.color": {
+                            "binding": {
+                              "config": {
+                                "path": "this.custom.enable"
+                              },
+                              "transforms": [
+                                {
+                                  "fallback": "#FFFFFF",
+                                  "inputType": "scalar",
+                                  "mappings": [
+                                    {
+                                      "input": false,
+                                      "output": "#D5D5D5"
+                                    },
+                                    {
+                                      "input": true,
+                                      "output": "#000000"
+                                    }
+                                  ],
+                                  "outputType": "color",
+                                  "type": "map"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          },
+                          "props.style.classes": {
+                            "binding": {
+                              "config": {
+                                "path": "this.custom.enable"
+                              },
+                              "transforms": [
+                                {
+                                  "fallback": "interactive/icon/disabled",
+                                  "inputType": "scalar",
+                                  "mappings": [
+                                    {
+                                      "input": false,
+                                      "output": "interactive/icon/disabled"
+                                    },
+                                    {
+                                      "input": true,
+                                      "output": "interactive/icon/selectable"
+                                    }
+                                  ],
+                                  "outputType": "scalar",
+                                  "type": "map"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "path": "material/attach_file"
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "flexC_utility"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "custom": {
+                      "tp_row_num": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/actions/run_parameters_row"
+                    },
+                    "meta": {
+                      "name": "tbl_data"
+                    },
+                    "position": {
+                      "basis": "400px"
+                    },
+                    "propConfig": {
+                      "props.data": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_local_run_parameters": "{view.custom.tp_local_run_parameters}"
+                            },
+                            "tagPath": "{tp_local_run_parameters}"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\t# variables\n#\treturn value\n\trun_parameters \u003d value[\"Workorder\"]\n\trun_parametersLength \u003d len(run_parameters[\"id\"]) #utilizing id as confirming run_parameters length\n\trun_parametersHeaders \u003d run_parameters.keys() #access json keys to confirm format\n\tdataArray \u003d []\n\t\n\t#populate with data and need to transform into table format\n\tfor idx in range(run_parametersLength):\n\t\tdataArray.append({})\n\t\tfor header in run_parametersHeaders:\n\t\t\tdataArray[idx][header] \u003d run_parameters[header][idx]\n\treturn dataArray",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.selection.selectedRow": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_row_num": "{this.custom.tp_row_num}"
+                            },
+                            "tagPath": "{tp_row_num}"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "id",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "number",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 60
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "sourcepos",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Source Position"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 80
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "sourcerots",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Source Rotation"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "number",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 80
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "dlocs",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Destination Location"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 100
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "drots",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Destination Rotation"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "number",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 100
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "dateFormat": "MM/DD/YYYY",
+                          "editable": false,
+                          "field": "dtype",
+                          "filter": {
+                            "boolean": {
+                              "condition": ""
+                            },
+                            "date": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "enabled": false,
+                            "number": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "string": {
+                              "condition": "",
+                              "value": ""
+                            },
+                            "visible": "on-hover"
+                          },
+                          "footer": {
+                            "align": "center",
+                            "justify": "left",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": ""
+                          },
+                          "header": {
+                            "align": "center",
+                            "justify": "center",
+                            "style": {
+                              "classes": ""
+                            },
+                            "title": "Destination Type"
+                          },
+                          "justify": "center",
+                          "nullFormat": {
+                            "includeNullStrings": false,
+                            "nullFormatValue": "",
+                            "strict": false
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "progressBar": {
+                            "bar": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "max": 100,
+                            "min": 0,
+                            "track": {
+                              "color": "",
+                              "style": {
+                                "classes": ""
+                              }
+                            },
+                            "value": {
+                              "enabled": true,
+                              "format": "0,0.##",
+                              "justify": "center",
+                              "style": {
+                                "classes": ""
+                              }
+                            }
+                          },
+                          "render": "string",
+                          "resizable": false,
+                          "sort": "none",
+                          "sortable": false,
+                          "strictWidth": true,
+                          "style": {
+                            "classes": ""
+                          },
+                          "toggleSwitch": {
+                            "color": {
+                              "selected": "",
+                              "unselected": ""
+                            }
+                          },
+                          "viewParams": {},
+                          "viewPath": "",
+                          "visible": true,
+                          "width": 250
+                        }
+                      ],
+                      "pager": {
+                        "bottom": false
+                      },
+                      "selection": {
+                        "data": [
+                          {
+                            "dlocs": "C1-1",
+                            "drots": 0,
+                            "dtype": "Staticpartof a serialnumber 1",
+                            "id": 111,
+                            "sourcepos": "A2-3",
+                            "sourcerots": 90
+                          }
+                        ]
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "flexC_local_run_parameters"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "propConfig": {
+                  "custom.run_parameters_value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "tp_local_run_parameters": "{view.custom.tp_local_run_parameters}"
+                        },
+                        "tagPath": "{tp_local_run_parameters}"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "tabC_run_parameters"
+            },
+            "position": {
+              "basis": "700px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "menuType": "modern",
+              "style": {
+                "classes": "user-interfaces/page/container_style_0"
+              },
+              "tabSize": {
+                "width": 200
+              },
+              "tabs": [
+                "Automation Hub Order",
+                "Local User Interface"
+              ]
+            },
+            "type": "ia.container.tab"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "lbl_subtitle"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "user-interfaces/page/container_subtitle_med"
+                  },
+                  "text": "HMI Controls"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "lbl_spacer_0"
+                },
+                "position": {
+                  "basis": "10px",
+                  "shrink": 0
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "custom": {
+                      "tp_write": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/auto/remote/start"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagpath \u003d self.custom.tp_write\n\ttag_value \u003d system.tag.readBlocking(tagpath)[0].value\n\tsystem.tag.writeBlocking(tagpath , not tag_value)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "btn_start"
+                    },
+                    "position": {
+                      "basis": "100px"
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_write": "{this.custom.tp_write}"
+                            },
+                            "tagPath": "{tp_write}"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#D5D5D5",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "#FFFFFF"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "#47FF47"
+                                }
+                              ],
+                              "outputType": "color",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "interactive/button/disabled user-interfaces/page/button_marginalized_0",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "interactive/button/disabled user-interfaces/page/button_marginalized_0"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "interactive/button/selectable user-interfaces/page/button_marginalized_0"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/play_circle_outline"
+                        }
+                      },
+                      "primary": false,
+                      "style": {},
+                      "text": "Start"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "lbl_spacer_0"
+                    },
+                    "position": {
+                      "basis": "10px",
+                      "shrink": 0
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "custom": {
+                      "tp_write": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/auto/remote/stop"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagpath \u003d self.custom.tp_write\n\ttag_value \u003d system.tag.readBlocking(tagpath)[0].value\n\tsystem.tag.writeBlocking(tagpath , not tag_value)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "btn_stop"
+                    },
+                    "position": {
+                      "basis": "100px"
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_write": "{this.custom.tp_write}"
+                            },
+                            "tagPath": "{tp_write}"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#D5D5D5",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "#FFFFFF"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "#47FF47"
+                                }
+                              ],
+                              "outputType": "color",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "interactive/button/disabled user-interfaces/page/button_marginalized_0",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "interactive/button/disabled user-interfaces/page/button_marginalized_0"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "interactive/button/selectable user-interfaces/page/button_marginalized_0"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/stop_circle"
+                        }
+                      },
+                      "primary": false,
+                      "style": {},
+                      "text": "Stop"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "lbl_spacer_1"
+                    },
+                    "position": {
+                      "basis": "10px",
+                      "shrink": 0
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "custom": {
+                      "tp_write": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/auto/remote/complete_ack"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagpath \u003d self.custom.tp_write\n\ttag_value \u003d system.tag.readBlocking(tagpath)[0].value\n\tsystem.tag.writeBlocking(tagpath , not tag_value)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "btn_complete_ack"
+                    },
+                    "position": {
+                      "basis": "120px"
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_write": "{this.custom.tp_write}"
+                            },
+                            "tagPath": "{tp_write}"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#D5D5D5",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "#FFFFFF"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "#47FF47"
+                                }
+                              ],
+                              "outputType": "color",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "interactive/button/disabled user-interfaces/page/button_marginalized_0",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "interactive/button/disabled user-interfaces/page/button_marginalized_0"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "interactive/button/selectable user-interfaces/page/button_marginalized_0"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/done_outline"
+                        }
+                      },
+                      "primary": false,
+                      "style": {},
+                      "text": "Complete Ack"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "flexC_0"
+                },
+                "position": {
+                  "basis": "100px"
+                },
+                "props": {
+                  "justify": "center"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "lbl_spacer_1"
+                },
+                "position": {
+                  "basis": "10px",
+                  "shrink": 0
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "custom": {
+                      "tp_write": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/util/reset"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagpath \u003d self.custom.tp_write\n\ttag_value \u003d system.tag.readBlocking(tagpath)[0].value\n\tsystem.tag.writeBlocking(tagpath , not tag_value)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "btn_reset"
+                    },
+                    "position": {
+                      "basis": "100px"
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_write": "{this.custom.tp_write}"
+                            },
+                            "tagPath": "{tp_write}"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#D5D5D5",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "#FFFFFF"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "#47FF47"
+                                }
+                              ],
+                              "outputType": "color",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "interactive/button/disabled user-interfaces/page/button_marginalized_0",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "interactive/button/disabled user-interfaces/page/button_marginalized_0"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "interactive/button/selectable user-interfaces/page/button_marginalized_0"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/refresh"
+                        }
+                      },
+                      "primary": false,
+                      "style": {},
+                      "text": "Reset"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "lbl_spacer_0"
+                    },
+                    "position": {
+                      "basis": "10px",
+                      "shrink": 0
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "custom": {
+                      "tp_write": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/command/auto/remote/initialize"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\ttagpath \u003d self.custom.tp_write\n\ttag_value \u003d system.tag.readBlocking(tagpath)[0].value\n\tsystem.tag.writeBlocking(tagpath , not tag_value)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "btn_initialize"
+                    },
+                    "position": {
+                      "basis": "100px"
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "//enabling logic\r\n!{[edge]zzPlayground/remote_controlled}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "tp_write": "{this.custom.tp_write}"
+                            },
+                            "tagPath": "{tp_write}"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#D5D5D5",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "#FFFFFF"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "#47FF47"
+                                }
+                              ],
+                              "outputType": "color",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      },
+                      "props.style.classes": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "interactive/button/disabled user-interfaces/page/button_marginalized_0",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "interactive/button/disabled user-interfaces/page/button_marginalized_0"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "interactive/button/selectable user-interfaces/page/button_marginalized_0"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/keyboard_return"
+                        }
+                      },
+                      "primary": false,
+                      "style": {},
+                      "text": "Initialize"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "flexC_1"
+                },
+                "position": {
+                  "basis": "100px"
+                },
+                "props": {
+                  "justify": "center"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "lbl_spacer_2"
+                },
+                "position": {
+                  "basis": "10px",
+                  "shrink": 0
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "flexC_button"
+            },
+            "position": {
+              "basis": "380px"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "user-interfaces/page/container_style_0"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "flexC_controls"
+        },
+        "position": {
+          "basis": "300px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "lbl_message"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "props": {
+              "style": {
+                "classes": "user-interfaces/page/message_med"
+              },
+              "text": "Message: "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "tp_message": "[MQTT Engine]Edge Nodes/ocp00/wc001_mw01/status/message"
+            },
+            "meta": {
+              "name": "lbl_message_data"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.message": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "tp_message": "{this.custom.tp_message}"
+                    },
+                    "tagPath": "{tp_message}"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "{this.custom.message} !\u003d \"\""
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "#FFFFFF",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "#FFFFFF"
+                        },
+                        {
+                          "input": true,
+                          "output": "#FFE8CC"
+                        }
+                      ],
+                      "outputType": "color",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.message"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "user-interfaces/page/message_data_med"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "flexC_inst_message"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "fileUploadSaved",
+          "pageScope": true,
+          "script": "\tfileData \u003d payload[\"fileData\"]\n\ttp_local_run_parameters \u003d self.view.custom.tp_local_run_parameters\n\tsystem.tag.writeBlocking(tp_local_run_parameters, system.util.jsonEncode(fileData))",
+          "sessionScope": false,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

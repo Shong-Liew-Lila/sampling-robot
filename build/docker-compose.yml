@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - web
+
+  ignition:
+    image: inductiveautomation/ignition:latest
+    container_name: ignition_gateway
+    ports:
+      - "8088:8088"
+      - "8060:8060"
+      - "8043:8043"
+      - "62541:62541"
+    volumes:
+      - ../ignition/projects:/usr/local/bin/ignition/data/projects
+      - ../ignition/custom-lib:/usr/local/bin/ignition/data/custom-lib
+      - ../ignition//config/ignition.conf:/usr/local/bin/ignition/data/ignition.conf
+      - ../ignition/db:/usr/local/bin/ignition/data/db
+      - ../ignition/ignition_user_modules:/usr/local/bin/ignition/user-lib/modules
+    environment:
+      - ACCEPT_IGNITION_EULA=Y
+      - IGNITION_EDITION=edge
+      - GATEWAY_MODULES_ENABLED=modbus-driver-v2,opc-ua,perspective,tag-historian,udp-tcp-drivers,web-developer
+    restart: unless-stopped
+    networks:
+      - web
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ../mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ../mosquitto/config/bridge/bridge.conf:/mosquitto/config/bridge/bridge.conf
+      - ../mosquitto/config/passwd:/mosquitto/config/passwd
+      - ../mosquitto/data:/mosquitto/data
+      - ../mosquitto/log:/mosquitto/log
+    networks:
+      - web
+networks:
+  web:
+    external: true
+
+volumes:
+  portainer_data:

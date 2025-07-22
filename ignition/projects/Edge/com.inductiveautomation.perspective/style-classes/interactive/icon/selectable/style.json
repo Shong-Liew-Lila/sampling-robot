@@ -1,0 +1,17 @@
+{
+  "base": {
+    "style": {
+      "cursor": "pointer"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "borderColor": "#956C2F",
+        "borderStyle": "solid",
+        "borderWidth": "2px"
+      }
+    }
+  ]
+}

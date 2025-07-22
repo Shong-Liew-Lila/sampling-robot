@@ -1,0 +1,365 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 60,
+      "width": 1080
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "embed_menu"
+        },
+        "props": {
+          "path": "embed-pages/docks/menu_horizontal",
+          "style": {
+            "marginBottom": "10px",
+            "marginLeft": "16px",
+            "marginRight": "16px",
+            "marginTop": "10px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "hasDelegate": true,
+          "name": "lbl_spacer_0"
+        },
+        "position": {
+          "basis": "5px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "hasDelegate": true,
+          "name": "lbl_spacer_1"
+        },
+        "position": {
+          "basis": "10px",
+          "shrink": 0
+        },
+        "props": {
+          "text": " "
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tif self.session.props.auth.authenticated:\n\t\tsystem.perspective.logout()\n\telse:\n\t\tsystem.perspective.login()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "icon_user",
+          "tooltip": {
+            "location": "bottom",
+            "tail": false
+          }
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.tooltip.enabled": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.authenticated"
+              },
+              "type": "property"
+            }
+          },
+          "meta.tooltip.text": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.authenticated"
+              },
+              "transforms": [
+                {
+                  "fallback": "err",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "click to sign in"
+                    },
+                    {
+                      "input": true,
+                      "output": "click to sign out"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "material/person",
+          "style": {
+            "classes": "user-interfaces/header/icon interactive/icon/selectable"
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tif self.session.props.auth.authenticated:\n\t\tsystem.perspective.logout()\n\telse:\n\t\tsystem.perspective.login()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "hasDelegate": true,
+          "name": "lbl_sign_in",
+          "tooltip": {
+            "location": "bottom",
+            "tail": false
+          }
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.tooltip.enabled": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.authenticated"
+              },
+              "type": "property"
+            }
+          },
+          "meta.tooltip.text": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.authenticated"
+              },
+              "transforms": [
+                {
+                  "fallback": "err",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": false,
+                      "output": "click to sign in"
+                    },
+                    {
+                      "input": true,
+                      "output": "click to sign out"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.user.userName"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003d null || len({value}) \u003d 0, \"Sign In\", {value})",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "interactive/labels/selectable",
+            "cursor": "pointer",
+            "marginLeft": "4px"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "hasDelegate": true,
+          "name": "lbl_spacer_2"
+        },
+        "position": {
+          "basis": "10px"
+        },
+        "props": {
+          "text": " "
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "page": "/alarms/alarm-status"
+              },
+              "scope": "C",
+              "type": "nav"
+            }
+          }
+        },
+        "meta": {
+          "name": "icon_alarm",
+          "tooltip": {
+            "enabled": true,
+            "location": "bottom",
+            "tail": false,
+            "text": "click to navigate to alarm page"
+          }
+        },
+        "position": {
+          "basis": "26px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "../lbl_alarm.custom.numAlarms"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0, \"user-interfaces/header/alarm_active interactive/labels/selectable\", \"user-interfaces/header/icon interactive/labels/selectable\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "material/alarm"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "page": "/alarms/alarm-status"
+              },
+              "scope": "C",
+              "type": "nav"
+            }
+          }
+        },
+        "meta": {
+          "hasDelegate": true,
+          "name": "lbl_alarm",
+          "tooltip": {
+            "enabled": true,
+            "location": "bottom",
+            "tail": false,
+            "text": "click to navigate to alarm page"
+          }
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.numAlarms": {
+            "binding": {
+              "config": {
+                "expression": "now(2000)"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn len(system.alarm.queryStatus(state\u003d[\"ActiveUnacked\"]))",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "../lbl_alarm.custom.numAlarms"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0, \"user-interfaces/header/alarm_active interactive/labels/selectable\", \"user-interfaces/header/icon interactive/labels/selectable\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "this.custom.numAlarms"
+              },
+              "transforms": [
+                {
+                  "expression": "numberFormat({value}, \"#,##0\") + \" alarm\" + if({value} \u003e 1 || {value} \u003d 0, \"s\", \"\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "cursor": "pointer",
+            "marginLeft": "6px"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "hasDelegate": true,
+          "name": "lbl_spacer_3"
+        },
+        "position": {
+          "basis": "16px",
+          "shrink": 0
+        },
+        "props": {
+          "text": " "
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "#956C2F28",
+        "borderStyle": "none",
+        "classes": "user-interfaces/header/container_style_0"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

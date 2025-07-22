@@ -1,0 +1,11 @@
+{
+  "base": {
+    "style": {
+      "color": "#2B2B2B",
+      "fontFamily": "inherit",
+      "fontSize": "16px",
+      "fontWeight": "normal",
+      "textAlign": "left"
+    }
+  }
+}
