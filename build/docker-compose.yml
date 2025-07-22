@@ -14,6 +14,7 @@ services:
       - web
 
   ignition:
+    user: "0:0"
     image: inductiveautomation/ignition:latest
     container_name: ignition_gateway
     ports:
