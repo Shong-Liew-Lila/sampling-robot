@@ -1,0 +1,17 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "code.py"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "lila-admin",
+      "timestamp": "2025-07-23T18:11:04Z"
+    },
+    "hintScope": 2,
+    "lastModificationSignature": "8efd50821f3035d6fb1fc46cbc70bd3b32cdcd00eeaa6fa8a9adf1c0158be973"
+  }
+}
