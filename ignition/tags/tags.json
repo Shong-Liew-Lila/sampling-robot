@@ -1,0 +1,3706 @@
+{
+  "name": "",
+  "tagType": "Provider",
+  "tags": [
+    {
+      "name": "Edge Nodes",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "10_4sec",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "vio",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "YV_10001",
+                  "typeId": "vio/digital/out/plc_opcua_beckhoff",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "TT_10001",
+                  "typeId": "vio/analog/in/plc_opcua_beckhoff",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "lo",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hihi",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "lolo",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hi",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "scale",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "historyProvider": "Edge Historian",
+                              "historicalDeadbandMode": "Off",
+                              "historyEnabled": true,
+                              "historyTimeDeadbandUnits": "MIN",
+                              "historySampleRateUnits": "MIN",
+                              "sampleMode": "Periodic",
+                              "historySampleRate": 1,
+                              "name": "scaled_val",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "scale",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "raw_max",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "offset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "eng_max",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "eng_min",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "eng_unit",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_min",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "lo",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "setpoint",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "hihi",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "setpoint",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "hi",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "setpoint",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "lolo",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "setpoint",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "value": "Temp (Fridge)",
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "lolo_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hihi_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "hi_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "lo_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "scale",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "raw_val",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "TC_10001",
+                  "typeId": "vio/analog/out/plc_opcua_beckhoff",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "scale",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "raw_min",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "eng_max",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "eng_min",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "offset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "raw_max",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "eng_unit",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "value": "Temp Control",
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "scale",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "raw_out",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "scale",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "setpoint",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "LSH_10001",
+                  "typeId": "vio/digital/in/plc_opcua_beckhoff",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "value": "Limit Switch High",
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "input",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "wss00",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "main",
+              "tagType": "Folder"
+            },
+            {
+              "name": "vio",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "do_0",
+                  "typeId": "vio/digital/out/plc_opcua_beckhoff",
+                  "parameters": {
+                    "program": {
+                      "dataType": "String",
+                      "value": "vio_wss00_lc"
+                    }
+                  },
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "do_4",
+                  "typeId": "vio/digital/out/plc_opcua_beckhoff",
+                  "parameters": {
+                    "program": {
+                      "dataType": "String",
+                      "value": "vio_wss00_lc"
+                    }
+                  },
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "do_2",
+                  "typeId": "vio/digital/out/plc_opcua_beckhoff",
+                  "parameters": {
+                    "program": {
+                      "dataType": "String",
+                      "value": "vio_wss00_lc"
+                    }
+                  },
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "do_1",
+                  "typeId": "vio/digital/out/plc_opcua_beckhoff",
+                  "parameters": {
+                    "program": {
+                      "dataType": "String",
+                      "value": "vio_wss00_lc"
+                    }
+                  },
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "do_3",
+                  "typeId": "vio/digital/out/plc_opcua_beckhoff",
+                  "parameters": {
+                    "program": {
+                      "dataType": "String",
+                      "value": "vio_wss00_lc"
+                    }
+                  },
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "active",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "fail_reset",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_reset",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "output",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "alarm",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "all_latch_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "all_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fail",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "name": "alarm_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "almlatch_timer_ms",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "auto_reset_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "sim",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "ctrl",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "light_ctrl",
+                  "typeId": "workcell/light_control/plc_opcua_beckhoff",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "yellow",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "blue",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "horn",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "green",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "red",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "power_on",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "horn_off",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "crit_safety",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "fault",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "running",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "safety",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "maint_en",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "value": "Light Control Module",
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "name": "running_blink_rate_ms",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "_types_",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "vio",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "analog",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "out",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "typeColor": -29696,
+                      "documentation": "Analog Output to Devices that uses current input like (4-20mA, 0-20mA) or voltage input like (0-10V, 0-5V, -5-5V, -10-10V) will be using this UDT.\n\nThis UDT is assuming PLC / IIoT is providing this exact same function.",
+                      "name": "plc_opcua_beckhoff",
+                      "parameters": {
+                        "nsu": {
+                          "dataType": "String",
+                          "value": "urn:BeckhoffAutomation"
+                        },
+                        "program": {
+                          "dataType": "String",
+                          "value": "vio_10_4sec"
+                        },
+                        "opc_ua_server": {
+                          "dataType": "String",
+                          "value": "TcOpcUaServer@BTN-000t6z42"
+                        },
+                        "ua": {
+                          "dataType": "String",
+                          "value": "twincat_symbol"
+                        }
+                      },
+                      "tagType": "UdtType",
+                      "tags": [
+                        {
+                          "name": "config",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "scale",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_aout.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "eng_min",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_aout.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "offset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_aout.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "eng_max",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_aout.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "String",
+                                  "name": "eng_unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_aout.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "raw_min",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_aout.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "raw_max",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_latch_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "fail",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "memory",
+                                  "dataType": "String",
+                                  "name": "label",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "scale",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_scl_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "raw_out",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "notes": "Could be disconnected or device malfunction.",
+                                      "name": "fail alarm",
+                                      "priority": "Critical",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "{[.]../../config/general/label} + \" not functioning\""
+                                      }
+                                    }
+                                  ],
+                                  "name": "fail",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "command",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "fail_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_reset",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "scale",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_scl_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "setpoint",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "in",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "typeColor": -16776961,
+                      "documentation": "Analog Input Sensors that uses current input like (4-20mA, 0-20mA) or voltage input like (0-10V, 0-5V, -5-5V, -10-10V) will be using this UDT.\n\nThis UDT is assuming PLC / IIoT is providing this exact same function.",
+                      "name": "plc_opcua_beckhoff",
+                      "parameters": {
+                        "nsu": {
+                          "dataType": "String",
+                          "value": "urn:BeckhoffAutomation"
+                        },
+                        "program": {
+                          "dataType": "String",
+                          "value": "vio_10_4sec"
+                        },
+                        "opc_ua_server": {
+                          "dataType": "String",
+                          "value": "TcOpcUaServer@BTN-000t6z42"
+                        },
+                        "ua": {
+                          "dataType": "String",
+                          "value": "twincat_symbol"
+                        }
+                      },
+                      "tagType": "UdtType",
+                      "tags": [
+                        {
+                          "name": "config",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "lolo",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lolo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lolo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lolo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lolo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lolo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Float4",
+                                      "name": "setpoint",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "fail",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "hihi",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hihi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hihi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hihi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hihi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Float4",
+                                      "name": "setpoint",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hihi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "lo",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Float4",
+                                      "name": "setpoint",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_lo.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_latch_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "hi",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Float4",
+                                      "name": "setpoint",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_hi.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "memory",
+                                  "dataType": "String",
+                                  "name": "label",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "scale",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_ain.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "String",
+                                  "name": "eng_unit",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_ain.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "eng_min",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_ain.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "eng_max",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_ain.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "raw_max",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_ain.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "offset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_scl_ain.{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Float4",
+                                  "name": "raw_min",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "scale",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_scl_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "scaled_val",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "notes": "Could be disconnected or device malfunction.",
+                                      "name": "fail alarm",
+                                      "priority": "Critical",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "{[.]../../config/general/label} + \" not functioning\""
+                                      }
+                                    }
+                                  ],
+                                  "name": "fail",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "name": "lolo alarm",
+                                      "priority": "Medium",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "//Setpoint above xx unit \r\n\" Value \"\r\n+ \" \u003e SP: \" + {[.]../../config/alarm/lolo/setpoint} //setpoint \r\n+ \" \" + {[.]../../config/scale/eng_unit} //unit"
+                                      }
+                                    }
+                                  ],
+                                  "name": "lolo",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "name": "hi alarm",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "//Setpoint above xx unit \r\n\" Value \"\r\n+ \" \u003e SP: \" + {[.]../../config/alarm/hi/setpoint} //setpoint \r\n+ \" \" + {[.]../../config/scale/eng_unit} //unit"
+                                      }
+                                    }
+                                  ],
+                                  "name": "hi",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "name": "hihi alarm",
+                                      "priority": "Medium",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "//Setpoint above xx unit \r\n\" Value \"\r\n+ \" \u003e SP: \" + {[.]../../config/alarm/hihi/setpoint} //setpoint \r\n+ \" \" + {[.]../../config/scale/eng_unit} //unit"
+                                      }
+                                    }
+                                  ],
+                                  "name": "hihi",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "name": "lo alarm",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "//Setpoint above xx unit \r\n\" Value \"\r\n+ \" \u003e SP: \" + {[.]../../config/alarm/lo/setpoint} //setpoint \r\n+ \" \" + {[.]../../config/scale/eng_unit} //unit"
+                                      }
+                                    }
+                                  ],
+                                  "name": "lo",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "command",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "lolo_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "lo_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "hihi_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "hi_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "fail_reset",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "scale",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_scl_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "raw_val",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "digital",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "in",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "typeColor": -16711936,
+                      "documentation": "Digital Input will be using this UDT.\n\nThis UDT is assuming PLC / IIoT is providing this exact same function.",
+                      "name": "plc_opcua_beckhoff",
+                      "parameters": {
+                        "nsu": {
+                          "dataType": "String",
+                          "value": "urn:BeckhoffAutomation"
+                        },
+                        "program": {
+                          "dataType": "String",
+                          "value": "vio_10_4sec"
+                        },
+                        "opc_ua_server": {
+                          "dataType": "String",
+                          "value": "TcOpcUaServer@BTN-000t6z42"
+                        },
+                        "ua": {
+                          "dataType": "String",
+                          "value": "twincat_symbol"
+                        }
+                      },
+                      "tagType": "UdtType",
+                      "tags": [
+                        {
+                          "name": "command",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "input",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "fail_reset",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "config",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "memory",
+                                  "dataType": "String",
+                                  "name": "label",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "fail",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_latch_en",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "active",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "notes": "Could be disconnected or device malfunction.",
+                                      "name": "fail alarm",
+                                      "priority": "Critical",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "{[.]../../config/general/label} + \" not functioning\""
+                                      }
+                                    }
+                                  ],
+                                  "name": "fail",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "out",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "typeColor": -2500352,
+                      "documentation": "Digital Output will be using this UDT.\n\nThis UDT is assuming PLC / IIoT is providing this exact same function.",
+                      "name": "plc_opcua_beckhoff",
+                      "parameters": {
+                        "nsu": {
+                          "dataType": "String",
+                          "value": "urn:BeckhoffAutomation"
+                        },
+                        "program": {
+                          "dataType": "String",
+                          "value": "vio_10_4sec"
+                        },
+                        "opc_ua_server": {
+                          "dataType": "String",
+                          "value": "TcOpcUaServer@BTN-000t6z42"
+                        },
+                        "ua": {
+                          "dataType": "String",
+                          "value": "twincat_symbol"
+                        }
+                      },
+                      "tagType": "UdtType",
+                      "tags": [
+                        {
+                          "name": "config",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_latch_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_en",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "name": "fail",
+                                  "tagType": "Folder",
+                                  "tags": [
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "sim",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "auto_reset_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Boolean",
+                                      "name": "alarm_en",
+                                      "tagType": "AtomicTag"
+                                    },
+                                    {
+                                      "opcItemPath": {
+                                        "bindType": "parameter",
+                                        "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_alm_fail.{TagName}"
+                                      },
+                                      "opcServer": {
+                                        "bindType": "parameter",
+                                        "binding": "{opc_ua_server}"
+                                      },
+                                      "valueSource": "opc",
+                                      "dataType": "Int4",
+                                      "name": "almlatch_timer_ms",
+                                      "tagType": "AtomicTag"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "memory",
+                                  "dataType": "String",
+                                  "name": "label",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "command",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "all_reset",
+                                  "tagType": "AtomicTag"
+                                },
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "dataType": "Boolean",
+                                  "name": "fail_reset",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "output",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "status",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "name": "alarm",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_alm_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Boolean",
+                                  "alarms": [
+                                    {
+                                      "setpointA": 1.0,
+                                      "notes": "Could be disconnected or device malfunction.",
+                                      "name": "fail alarm",
+                                      "priority": "Critical",
+                                      "label": {
+                                        "bindType": "Expression",
+                                        "value": "//\u003cInstanceName\u003e [\u003ctag label\u003e] - \u003calarm name\u003e\r\n{InstanceName} + \" \"\r\n+ \"[\" + {[.]../../config/general/label} + \"] \"\r\n+ \"- \" + {name}"
+                                      },
+                                      "displayPath": {
+                                        "bindType": "Expression",
+                                        "value": "{[.]../../config/general/label} + \" not functioning\""
+                                      }
+                                    }
+                                  ],
+                                  "name": "fail",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "general",
+                              "tagType": "Folder",
+                              "tags": [
+                                {
+                                  "opcItemPath": {
+                                    "bindType": "parameter",
+                                    "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                                  },
+                                  "opcServer": {
+                                    "bindType": "parameter",
+                                    "binding": "{opc_ua_server}"
+                                  },
+                                  "valueSource": "opc",
+                                  "readOnly": true,
+                                  "dataType": "Float4",
+                                  "name": "active",
+                                  "tagType": "AtomicTag"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "safety",
+          "tagType": "Folder"
+        },
+        {
+          "name": "workcell",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "light_control",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "typeColor": -2500352,
+                  "documentation": "",
+                  "name": "plc_opcua_beckhoff",
+                  "parameters": {
+                    "nsu": {
+                      "dataType": "String",
+                      "value": "urn:BeckhoffAutomation"
+                    },
+                    "program": {
+                      "dataType": "String",
+                      "value": "ctr_wcs00_lc"
+                    },
+                    "opc_ua_server": {
+                      "dataType": "String",
+                      "value": "TcOpcUaServer@BTN-000t6z42"
+                    },
+                    "ua": {
+                      "dataType": "String",
+                      "value": "twincat_symbol"
+                    }
+                  },
+                  "tagType": "UdtType",
+                  "tags": [
+                    {
+                      "name": "status",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": true,
+                              "dataType": "Boolean",
+                              "name": "red",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": true,
+                              "dataType": "Boolean",
+                              "name": "yellow",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": true,
+                              "dataType": "Boolean",
+                              "name": "horn",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": true,
+                              "dataType": "Boolean",
+                              "name": "blue",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.sts_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": true,
+                              "dataType": "Boolean",
+                              "name": "green",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "command",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "power_on",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "crit_safety",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "safety",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "maint_en",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "horn_off",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "fault",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cmd_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Boolean",
+                              "name": "running",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "config",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "general",
+                          "tagType": "Folder",
+                          "tags": [
+                            {
+                              "opcItemPath": {
+                                "bindType": "parameter",
+                                "binding": "nsu\u003d{nsu}:Ua:{ua};s\u003d{program}.fb_{InstanceName}.cfg_general_{TagName}"
+                              },
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "opc",
+                              "readOnly": false,
+                              "dataType": "Int4",
+                              "name": "running_blink_rate_ms",
+                              "tagType": "AtomicTag"
+                            },
+                            {
+                              "opcServer": {
+                                "bindType": "parameter",
+                                "binding": "{opc_ua_server}"
+                              },
+                              "valueSource": "memory",
+                              "dataType": "String",
+                              "name": "label",
+                              "tagType": "AtomicTag"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zzPlayground",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "valueSource": "memory",
+          "dataType": "String",
+          "name": "mode",
+          "value": "auto",
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "dataType": "Boolean",
+          "name": "remote_controlled",
+          "value": false,
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "\tif currentValue.value:\n\t\tsystem.tag.writeBlocking(\"[default]zzPlayground/mode\", \"off\")"
+            }
+          ],
+          "dataType": "Boolean",
+          "name": "off",
+          "value": false,
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "dataType": "Document",
+          "name": "local_run_parameters",
+          "value": {
+            "Fixture_ID": "fixture_number",
+            "Work_Order_Number": 369,
+            "Workorder": {
+              "dlocs": [
+                "C1-1",
+                "C2-2",
+                "D2-1"
+              ],
+              "drots": [
+                0,
+                90,
+                180
+              ],
+              "dtype": [
+                "Staticpartof a serialnumber 1",
+                "Staticpartof a serialnumber 2",
+                "Staticpartof a serialnumber 3"
+              ],
+              "sourcerots": [
+                90,
+                270,
+                0
+              ],
+              "id": [
+                111,
+                222,
+                333
+              ],
+              "sourcepos": [
+                "A2-3",
+                "A3-2",
+                "A3-2"
+              ]
+            }
+          },
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "\tif currentValue.value:\n\t\tsystem.tag.writeBlocking(\"[default]zzPlayground/mode\", \"auto\")"
+            }
+          ],
+          "dataType": "Boolean",
+          "name": "auto",
+          "value": false,
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "banner_safety_test",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "opc",
+              "opcItemPath": "[banner]C1",
+              "dataType": "Boolean",
+              "name": "test_vo1",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            }
+          ]
+        },
+        {
+          "valueSource": "memory",
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "\tif currentValue.value:\n\t\tsystem.tag.writeBlocking(\"[default]zzPlayground/mode\", \"hand\")"
+            }
+          ],
+          "dataType": "Boolean",
+          "name": "hand",
+          "value": false,
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "alarm",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "alm_safety_door",
+              "value": false,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "Boolean",
+              "name": "alm_estop",
+              "value": false,
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "valueSource": "memory",
+          "dataType": "String",
+          "name": "message",
+          "value": "",
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "name": "row_num",
+          "value": 0,
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "dataType": "Boolean",
+          "alarms": [
+            {
+              "setpointA": 1.0,
+              "name": "Alarm"
+            }
+          ],
+          "name": "test_alarm",
+          "value": false,
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "historian",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "historyProvider": "Edge Historian",
+              "name": "New Tag",
+              "historyEnabled": true,
+              "value": 12,
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "valueSource": "memory",
+          "dataType": "Document",
+          "name": "remote_run_parameters",
+          "value": {
+            "Fixture_ID": "awsomenumber",
+            "Work_Order_Number": 123,
+            "Workorder": {
+              "dlocs": [
+                "A1-1",
+                "B2-2",
+                "B3-1"
+              ],
+              "drots": [
+                90,
+                270,
+                270
+              ],
+              "dtype": [
+                "Staticpartof a serialnumber",
+                "Staticpartof a serialnumber",
+                "Staticpartof a serialnumber"
+              ],
+              "sourcerots": [
+                0,
+                90,
+                180
+              ],
+              "id": [
+                123,
+                132,
+                132
+              ],
+              "sourcepos": [
+                "C2-3",
+                "C3-2",
+                "C3-2"
+              ]
+            }
+          },
+          "tagType": "AtomicTag"
+        },
+        {
+          "valueSource": "memory",
+          "dataType": "String",
+          "name": "status",
+          "value": "sampleId-111",
+          "tagType": "AtomicTag"
+        }
+      ]
+    }
+  ]
+}

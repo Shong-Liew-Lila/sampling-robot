@@ -12,8 +12,13 @@ class MyAlarmListener(AlarmListener):
 		alarm_label = str(evt.getName())
 		equipment = "dev system in Cube"
 		alarm_id = str(evt.getId())
-		system.util.getLogger("MyAlarmListener").info("%s"%alarm_reason)
-		notification.slack.webhookInvoke(alarm_reason, alarm_severity, alarm_label, equipment, alarm_id)
+#		notification.slack.webhookInvoke(alarm_reason, alarm_severity, alarm_label, equipment, alarm_id)
+		payload = {"event": evt}
+		scope = "G"
+		remoteServers = ["lilahq_ign_dev00"]
+		project = "global_script"
+		messageHandler = "alarmQueue"
+		system.util.sendMessage(project = project, messageHandler = messageHandler, scope = scope, remoteServers = remoteServers, payload = payload)
 		
 	def onClear(self,evt):
 		return
